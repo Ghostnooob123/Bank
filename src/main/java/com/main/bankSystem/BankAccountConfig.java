@@ -14,8 +14,14 @@ public class BankAccountConfig {
     @Bean
     CommandLineRunner commandLineRunner(BankAccount_Repository repository){
         return args -> {
-            BankAccount bankAccount1 = new BankAccount(1, "Ivo Rahnev", "4000 7684 2757 5786", 1771D,  LocalDate.of(2006, MARCH, 15));
-            repository.saveAll(List.of(bankAccount1));
+            BankAccount bankAccount = BankAccount.BankAccountBuilder()
+                    .AccountHolderUniqueId(1)
+                    .AccountHolderName("Ivo Rahnev")
+                    .AccountHolderCreditDebitCard("4000 7684 2757 5786")
+                    .AccountHolderBalance(1771D)
+                    .AccountHolderDob(LocalDate.of(2006, MARCH, 15))
+                    .build();
+            repository.saveAll(List.of(bankAccount));
         };
     }
 }
