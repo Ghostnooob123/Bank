@@ -4,7 +4,7 @@ package com.main.bankSystem;
 import java.time.LocalDate;
 
 public class BankAccountBuilder {
-    private BankAccount newBankAccount = new BankAccount();
+    private final BankAccount newBankAccount = new BankAccount();
 
     public BankAccountBuilder AccountHolderUniqueId(Integer accountHolder_uniqueId) {
         newBankAccount.setAccountHolder_uniqueId(accountHolder_uniqueId);
