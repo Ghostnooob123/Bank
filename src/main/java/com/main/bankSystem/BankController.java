@@ -31,10 +31,12 @@ public class BankController {
     public void updateStudent(@PathVariable("accountHolder_uniqueId") Integer accountHolder_uniqueId,
                               @RequestParam(required = false) String accountHolder_Name,
                               @RequestParam(required = false) String accountHolder_Credit_Debit_Card,
-                              @RequestParam(required = false) Double accountHolder_Balance) {
+                              @RequestParam(required = false) Double accountHolder_Balance,
+                              @RequestParam(required = false) String accountHolder_Status) {
         bankService.updateBankAccount(accountHolder_uniqueId,
                 accountHolder_Name,
                 accountHolder_Credit_Debit_Card,
-                accountHolder_Balance);
+                accountHolder_Balance,
+                accountHolder_Status);
     }
 }

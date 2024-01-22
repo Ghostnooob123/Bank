@@ -1,6 +1,5 @@
 package com.main.bankSystem;
 
-
 import java.time.LocalDate;
 
 public class BankAccountBuilder {
@@ -25,13 +24,18 @@ public class BankAccountBuilder {
         return this;
     }
 
-    public BankAccountBuilder AccountHolderDob(LocalDate accountHolderDob) {
-        newBankAccount.setAccountHolder_Dob(accountHolderDob);
+    public BankAccountBuilder AccountHolderDob(LocalDate accountHolder_Dob) {
+        newBankAccount.setAccountHolder_Dob(accountHolder_Dob);
         return this;
     }
 
-    public BankAccountBuilder AccountHolderAge(Integer accountHolderAge) {
-        newBankAccount.setAccountHolder_Age(accountHolderAge);
+    public BankAccountBuilder AccountHolderAge(Integer accountHolder_Age) {
+        newBankAccount.setAccountHolder_Age(accountHolder_Age);
+        return this;
+    }
+
+    public BankAccountBuilder AccountHolderStatus(String accountHolder_Status){
+        newBankAccount.setAccountHolder_Status(accountHolder_Status);
         return this;
     }
 

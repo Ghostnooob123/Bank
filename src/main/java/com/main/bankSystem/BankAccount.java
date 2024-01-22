@@ -30,6 +30,7 @@ public class BankAccount {
     private String AccountHolder_Name;
     private String AccountHolder_Credit_Debit_Card;
     private Double AccountHolder_Balance;
+    private String AccountHolder_Status;
     private LocalDate AccountHolder_Dob;
     private LocalDate AccountHolder_LastTransactionDate;
     @Transient
@@ -41,10 +42,16 @@ public class BankAccount {
 
     protected void setAccountHolder_uniqueId(Integer new_AccountHolder_uniqueId){
         AccountHolder_uniqueId = new_AccountHolder_uniqueId;
+        AccountHolder_Status = "Active";
     }
     protected void setAccountHolder_Balance(Double new_AccountHolder_Balance){
-        AccountHolder_Balance = new_AccountHolder_Balance;
-        AccountHolder_LastTransactionDate = LocalDate.now();
+        if (AccountHolder_Status.equals("Active")){
+            AccountHolder_Balance = new_AccountHolder_Balance;
+            AccountHolder_LastTransactionDate = LocalDate.now();
+        }
+        else{
+            throw new IllegalStateException("Inactive account");
+        }
     }
 
     // Static method to get a builder instance

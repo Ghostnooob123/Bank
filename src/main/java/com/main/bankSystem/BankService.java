@@ -12,8 +12,7 @@ public class BankService {
     private final BankAccount_Repository bankAccount_repository;
 
     @Autowired
-    public BankService(BankAccount_Repository bankAccountRepository) {
-        bankAccount_repository = bankAccountRepository;
+    public BankService(BankAccount_Repository bankAccountRepository) { bankAccount_repository = bankAccountRepository;
     }
 
     public List<BankAccount> getBankAccounts() {
@@ -21,7 +20,8 @@ public class BankService {
     }
 
     public void newBankAccount(BankAccount bankAccount) {
-        Optional<BankAccount> bankAccountOptional = bankAccount_repository.findByAccountHolder_uniqueCardNumber(bankAccount.getAccountHolder_Credit_Debit_Card());
+        Optional<BankAccount> bankAccountOptional = bankAccount_repository
+                .findByAccountHolder_uniqueCardNumber(bankAccount.getAccountHolder_Credit_Debit_Card());
 
         if (bankAccountOptional.isPresent()){
             throw new IllegalStateException("card number taken");
@@ -43,18 +43,20 @@ public class BankService {
 
     @Transactional
     public void updateBankAccount(Integer accountHolder_uniqueId,
-                                  String accountHolderName,
+                                  String accountHolder_Name,
                                   String accountHolderCreditDebitCard,
-                                  Double accountHolder_Balance) {
+                                  Double accountHolder_Balance,
+                                  String accountHolder_Status) {
         BankAccount bankAccount = bankAccount_repository
                 .findBankAccountByAccountHolder_uniqueId(accountHolder_uniqueId)
                 .orElseThrow(() -> new IllegalStateException("bank account with id: " + accountHolder_uniqueId + " does not exist"));
 
-        if (accountHolderName != null){
-            bankAccount.setAccountHolder_Name(accountHolderName);
+        if (accountHolder_Name != null){
+            bankAccount.setAccountHolder_Name(accountHolder_Name);
         }
         if (accountHolderCreditDebitCard != null){
-            Optional<BankAccount> bankAccountOptional = bankAccount_repository.findByAccountHolder_uniqueCardNumber(bankAccount.getAccountHolder_Credit_Debit_Card());
+            Optional<BankAccount> bankAccountOptional = bankAccount_repository
+                    .findByAccountHolder_uniqueCardNumber(bankAccount.getAccountHolder_Credit_Debit_Card());
 
             if (bankAccountOptional.isPresent()){
                 throw new IllegalStateException("card number taken");
@@ -64,6 +66,9 @@ public class BankService {
         }
         if (accountHolder_Balance != null){
             bankAccount.setAccountHolder_Balance(accountHolder_Balance);
+        }
+        if (accountHolder_Status != null){
+            bankAccount.setAccountHolder_Status(accountHolder_Status);
         }
     }
 }
