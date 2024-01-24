@@ -34,6 +34,8 @@ public class BankAccount {
     private LocalDate AccountHolder_Dob;
     private LocalDate AccountHolder_LastTransactionDate;
     @Transient
+    private LocalDate AccountHolder_CreatedOn;
+    @Transient
     private Integer AccountHolder_Age;
 
     protected Integer getAccountHolder_Age(){
@@ -52,6 +54,11 @@ public class BankAccount {
         else{
             throw new IllegalStateException("Inactive account");
         }
+    }
+
+    protected BankAccount(){
+        AccountHolder_Status = "Active";
+        AccountHolder_CreatedOn = LocalDate.now();
     }
 
     // Static method to get a builder instance

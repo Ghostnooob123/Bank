@@ -29,13 +29,18 @@ public class BankAccountBuilder {
         return this;
     }
 
-    public BankAccountBuilder AccountHolderAge(Integer accountHolder_Age) {
-        newBankAccount.setAccountHolder_Age(accountHolder_Age);
+    public BankAccountBuilder AccountHolderStatus(String accountHolder_Status){
+        newBankAccount.setAccountHolder_Status(accountHolder_Status);
         return this;
     }
 
-    public BankAccountBuilder AccountHolderStatus(String accountHolder_Status){
-        newBankAccount.setAccountHolder_Status(accountHolder_Status);
+    public BankAccountBuilder AccountHolderCreatedOn(LocalDate accountHolder_CreatedOn){
+        newBankAccount.setAccountHolder_CreatedOn(accountHolder_CreatedOn);
+        return this;
+    }
+
+    public BankAccountBuilder AccountHolderAge(Integer accountHolder_Age) {
+        newBankAccount.setAccountHolder_Age(accountHolder_Age);
         return this;
     }
 
