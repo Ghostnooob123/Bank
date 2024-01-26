@@ -1,4 +1,4 @@
-package com.main.bankSystem;
+package backend.bankSystem;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

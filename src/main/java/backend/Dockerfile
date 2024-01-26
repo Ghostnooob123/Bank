@@ -1,9 +1,6 @@
 # Use a base image with Java and Maven installed
 FROM eclipse-temurin:21-jdk-jammy
 
-# Expose the port your application runs on
-EXPOSE 8080
-
 # Set the working directory in the container
 WORKDIR /app
 

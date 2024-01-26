@@ -15,8 +15,10 @@ services:
       - springapimysql-net
     volumes:
       - ./data:/var/lib/mysql
-  api_service:
-    build: .
+  backend:
+    build:
+      context: .
+      dockerfile: "./src/main/java/backend/Dockerfile"
     restart: on-failure
     ports:
       - "8080:8080"
@@ -29,6 +31,15 @@ services:
 
     volumes:
       - .m2:/root/.m2
+  frontend:
+    build:
+      context: .
+      dockerfile: "./src/main/java/frontend/Dockerfile"
+    ports:
+      - "8085:8085"
+    volumes:
+      - ./src/main/java/frontend:/app
+    command: "npm run serve"
 
 networks:
   springapimysql-net:

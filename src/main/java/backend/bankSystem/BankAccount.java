@@ -1,4 +1,4 @@
-package com.main.bankSystem;
+package backend.bankSystem;
 
 import jakarta.persistence.*;
 
