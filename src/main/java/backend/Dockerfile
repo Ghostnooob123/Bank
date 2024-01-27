@@ -1,8 +1,6 @@
 # Use a base image with Java and Maven installed
 FROM eclipse-temurin:21-jdk-jammy
 
-EXPOSE 8082
-
 # Set the working directory in the container
 WORKDIR /app
 
