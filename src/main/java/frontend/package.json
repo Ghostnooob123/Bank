@@ -1,10 +1,10 @@
 {
   "name": "vuejs",
   "version": "1.0.0",
-  "description": "Example ISUS",
+  "description": "Bank frontend",
   "main": "src/main.js",
   "scripts": {
-    "serve": "vue-cli-service serve --port 8085 --watch",
+    "serve": "vue-cli-service serve --port 8085",
     "build": "vue-cli-service build"
   },
   "author": "",

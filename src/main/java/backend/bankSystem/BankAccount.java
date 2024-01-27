@@ -65,5 +65,4 @@ public class BankAccount {
     protected static BankAccountBuilder BankAccountBuilder() {
         return new BankAccountBuilder();
     }
-
 }

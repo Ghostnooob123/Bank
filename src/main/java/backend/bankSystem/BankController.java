@@ -20,23 +20,22 @@ public class BankController {
         return bankService.getBankAccounts();
     }
     @PostMapping()
-    public void registerBankAccount(@RequestBody BankAccount bankAccount){
-        bankService.newBankAccount(bankAccount);
+    public String registerBankAccount(@RequestBody BankAccount newBankAccount){
+
+        bankService.newBankAccount(newBankAccount);
+
+        return "New bank account registered with id: " + newBankAccount.getAccountHolder_Name();
     }
     @DeleteMapping(path = "{accountHolder_uniqueId}")
     public void deleteBankAccount(@PathVariable("accountHolder_uniqueId") Integer accountHolder_uniqueId) {
         bankService.deleteBankAccount(accountHolder_uniqueId);
     }
     @PutMapping(path={"{accountHolder_uniqueId}"})
-    public void updateStudent(@PathVariable("accountHolder_uniqueId") Integer accountHolder_uniqueId,
-                              @RequestParam(required = false) String accountHolder_Name,
-                              @RequestParam(required = false) String accountHolder_Credit_Debit_Card,
-                              @RequestParam(required = false) Double accountHolder_Balance,
-                              @RequestParam(required = false) String accountHolder_Status) {
-        bankService.updateBankAccount(accountHolder_uniqueId,
-                accountHolder_Name,
-                accountHolder_Credit_Debit_Card,
-                accountHolder_Balance,
-                accountHolder_Status);
+    public String updateBankAccount(@PathVariable("accountHolder_uniqueId") Integer accountHolder_uniqueId,
+                                  @RequestBody BankAccount updateBankAccount) {
+
+        bankService.updateBankAccount(accountHolder_uniqueId, updateBankAccount);
+
+        return "Updated bank account: " + accountHolder_uniqueId;
     }
 }
