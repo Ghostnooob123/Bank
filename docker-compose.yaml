@@ -10,7 +10,7 @@ services:
       MYSQL_ROOT_PASSWORD: Ivomama1230
       MYSQL_PASSWORD: Ivomama1230
     ports:
-      - "3306:3306"
+      - "3302:3306"
     networks:
       - backend-net
     volumes:
@@ -25,7 +25,7 @@ services:
     networks:
       - backend-net
     environment:
-      - spring.datasource.url=jdbc:mysql://mysql:3306/bank?allowPublicKeyRetrieval=true
+      - spring.datasource.url=jdbc:mysql://mysql:3306/bank
     depends_on:
       - mysql
     volumes:

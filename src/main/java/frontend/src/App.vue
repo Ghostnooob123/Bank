@@ -13,6 +13,7 @@
         <th>Account Balance</th>
         <th>Account Status</th>
         <th>Account Date of birth</th>
+        <th>Delete Account</th>
       </tr>
       <tr v-for="account in accounts" :key="account.accountHolder_uniqueId">
         <td>
@@ -29,6 +30,11 @@
         </td>
         <td>{{ account.accountHolder_Status }}</td>
         <td>{{ account.accountHolder_Dob }}</td>
+        <td>
+          <button @click="deleteAccount(account)">
+            Delete
+          </button>
+        </td>
       </tr>
     </table>
 
@@ -119,7 +125,7 @@ export  default {
 
         console.log(response);
         if (response.request.status == 200) {
-          alert("Work")
+          alert("Edited Successfully")
         }
       } catch (error) {
         console.error('Error editing account:', error);
@@ -152,6 +158,10 @@ export  default {
                 accountHolder_Dob: this.dob,
               });
 
+          if (response.request.status == 200) {
+            alert("Registered Successfully")
+          }
+
           this.newRegister = 1;
           this.registerFailed = "";
         }
@@ -162,6 +172,19 @@ export  default {
         console.log(response);
       } catch (error) {
         console.error('Error register account:', error);
+      }
+    },
+    async deleteAccount(account){
+      try {
+        const response = await axios.delete(`http://localhost:8082/api/v1/bank/d/${account.accountHolder_uniqueId}`);
+
+        console.log(response);
+        if (response.request.status == 200) {
+          this.newRegister = 1;
+          alert("Deleted Successfully")
+        }
+      } catch (error) {
+        console.error('Error deleting account:', error);
       }
     }
   }

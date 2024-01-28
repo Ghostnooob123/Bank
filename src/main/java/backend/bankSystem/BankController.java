@@ -26,7 +26,7 @@ public class BankController {
 
         return "New bank account registered with id: " + newBankAccount.getAccountHolder_Name();
     }
-    @DeleteMapping(path = "{accountHolder_uniqueId}")
+    @DeleteMapping(path = "d/{accountHolder_uniqueId}")
     public void deleteBankAccount(@PathVariable("accountHolder_uniqueId") Integer accountHolder_uniqueId) {
         bankService.deleteBankAccount(accountHolder_uniqueId);
     }
