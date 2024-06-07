@@ -2,7 +2,7 @@
 Is a simple frontend and backend project for learning techonlogies like vueJS, spring, mySQL and etc.
 
 ## How to Use
-Run docker on your machine then run the docker file and create the container containing the frontend, backend and the mySQL server.
+Open Docker Desktop on your machine (WindowsOS) then run the docker-compose.yaml and create the container containing the frontend, backend and the mySQL server.
 
 ## License
 
